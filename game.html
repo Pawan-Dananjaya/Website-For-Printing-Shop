@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Challenge | DPP Printing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --accent: #3498db;
+            --light: #ecf0f1;
+            --text: #333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('games.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .game-container {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        h1 {
+            color: #f5c406;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .game-description {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .number-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .number-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .number-btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .number-btn:active {
+            transform: translateY(0);
+        }
+        
+        .number-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        
+        #message {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .success {
+            color: #2ecc71;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+        }
+        
+        .attempts-counter {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: var(--light);
+        }
+        
+        .reset-btn {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .reset-btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .reset-btn:active {
+            transform: translateY(0);
+        }
+        
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            .game-container {
+                padding: 30px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .number-buttons {
+                gap: 10px;
+            }
+            
+            .number-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .game-container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .number-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <a href="./index.html">
+        <img src="logodpp.png" alt="DPP Printing Logo">
+        </a>
+    </div>
+    
+    <div class="game-container">
+        <h1>Number Challenge</h1>
+        <p class="game-description">Can you guess the secret number between 1 and 5? Test your luck and win bragging rights!</p>
+        
+        <div class="number-buttons">
+            <button class="number-btn" onclick="checkGuess(1)">1</button>
+            <button class="number-btn" onclick="checkGuess(2)">2</button>
+            <button class="number-btn" onclick="checkGuess(3)">3</button>
+            <button class="number-btn" onclick="checkGuess(4)">4</button>
+            <button class="number-btn" onclick="checkGuess(5)">5</button>
+        </div>
+        
+        <div id="message">Select a number to begin</div>
+        <div class="attempts-counter" id="attempts">Attempts: 0</div>
+        
+        <button class="reset-btn" onclick="resetGame()" id="resetBtn" style="display: none;">
+            <i class="fas fa-redo"></i> Play Again
+        </button>
+    </div>
+
+    <script>
+        // Game variables
+        let randomNumber = Math.floor(Math.random() * 5) + 1;
+        let attempts = 0;
+        const maxAttempts = 5;
+        
+        // DOM elements
+        const messageEl = document.getElementById('message');
+        const attemptsEl = document.getElementById('attempts');
+        const resetBtn = document.getElementById('resetBtn');
+        const numberBtns = document.querySelectorAll('.number-btn');
+        
+        function checkGuess(userGuess) {
+            attempts++;
+            attemptsEl.textContent = `Attempts: ${attempts}`;
+            
+            if (userGuess === randomNumber) {
+                // Correct guess
+                messageEl.innerHTML = `
+                    <span class="success">
+                        <i class="fas fa-trophy"></i> Congratulations!
+                    </span><br>
+                    You guessed the number ${randomNumber} correctly in ${attempts} ${attempts === 1 ? 'try' : 'tries'}!
+                `;
+                disableButtons();
+                resetBtn.style.display = 'inline-block';
+            } else {
+                // Wrong guess
+                if (attempts >= maxAttempts) {
+                    messageEl.innerHTML = `
+                        Game over! The correct number was ${randomNumber}.<br>
+                        Better luck next time!
+                    `;
+                    disableButtons();
+                    resetBtn.style.display = 'inline-block';
+                } else {
+                    const hint = userGuess < randomNumber ? 'higher' : 'lower';
+                    messageEl.textContent = `Try again! The number is ${hint} than ${userGuess}.`;
+                    
+                    // Add shake animation to wrong button
+                    const clickedBtn = document.querySelector(`.number-btn:nth-child(${userGuess})`);
+                    clickedBtn.classList.add('wrong-guess');
+                    setTimeout(() => {
+                        clickedBtn.classList.remove('wrong-guess');
+                    }, 500);
+                }
+            }
+        }
+        
+        function disableButtons() {
+            numberBtns.forEach(btn => {
+                btn.classList.add('disabled');
+                btn.setAttribute('disabled', 'disabled');
+            });
+        }
+        
+        function enableButtons() {
+            numberBtns.forEach(btn => {
+                btn.classList.remove('disabled');
+                btn.removeAttribute('disabled');
+            });
+        }
+        
+        function resetGame() {
+            // Generate new random number
+            randomNumber = Math.floor(Math.random() * 5) + 1;
+            attempts = 0;
+            
+            // Reset UI
+            messageEl.textContent = 'Select a number to begin';
+            attemptsEl.textContent = 'Attempts: 0';
+            resetBtn.style.display = 'none';
+            enableButtons();
+        }
+    </script>
+</body>
+</html>
