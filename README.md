@@ -42,13 +42,20 @@ This project focuses on UI/UX, showcasing a professional, responsive layout with
 
 <br>
 <br>
+<br>
+<br>
 
 📸 Screenshots
+
+<br>
+<br>
 
 **Home Page**
 
 <img width="1366" height="768" alt="Screenshot (13)" src="https://github.com/user-attachments/assets/4922e377-006d-4575-ba13-8ae6b323da14" />
 
+<br>
+<br>
 <br>
 <br>
 
@@ -70,11 +77,15 @@ This project focuses on UI/UX, showcasing a professional, responsive layout with
 
 <br>
 <br>
+<br>
+<br>
 
 **Wyh DPP**
 
 <img width="1366" height="768" alt="Screenshot (18)" src="https://github.com/user-attachments/assets/8651b291-ea07-4ee1-9265-f71c6294dc7b" />
 
+<br>
+<br>
 <br>
 <br>
 
@@ -86,6 +97,8 @@ This project focuses on UI/UX, showcasing a professional, responsive layout with
 
 <img width="1366" height="768" alt="Screenshot (20)" src="https://github.com/user-attachments/assets/0846c859-b86d-4f9d-b99f-60f437de72c8" />
 
+<br>
+<br>
 <br>
 <br>
 
