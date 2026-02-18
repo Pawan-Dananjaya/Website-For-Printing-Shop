@@ -7,7 +7,7 @@ Live Demo:
 
 <br>
 
-A clean and modern frontend website for a Digital Printing Press, created as a 2nd semester group project using HTML, CSS, and JavaScript.
+A clean and modern frontend website for a Digital Printing Press, created as a 2nd semester group project using HTML, CSS and JavaScript.
 This project focuses on UI/UX, showcasing a professional, responsive layout with smooth interactions.
 
 <br>
